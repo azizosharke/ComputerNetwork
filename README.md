@@ -1,4 +1,4 @@
-# ComputerNetwork
+# ComputerNetworks
 
 ## CSU33031 - Computer Networks Assignments :
 
