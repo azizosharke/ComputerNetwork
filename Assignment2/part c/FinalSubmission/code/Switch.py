@@ -16,16 +16,15 @@ class Router(Node):
 
     def transferMessage(packet):
         try:
-            data = packet.forwardingTable()
+           info = packet.forwardingTable()
 
-            if data[TYPE] == getNextHop(packet):
+            if info[] == getNextHop(packet):
                 sendSignal(packet)
-            elif sendSignal(data):
+            elif sendSignal(info):
                 print("Forwarder : Updated Table ")
                 packet.updateTable(packet)
         except Exception as e:
             print(e)
-
 
 
         def nextDes(packet):
@@ -41,7 +40,7 @@ class Router(Node):
             return "it does not exist !"
 
     def updateForwardingTable(self, packet):
-        data = packet.getData()
+        info = packet.getData()
         b = [packet.getLength() - 1]
         tableUpdate = str(b)
         switchTable = tableUpdate.split(", ")
@@ -49,9 +48,9 @@ class Router(Node):
         controllerTable: object = [switchTable / 7][7]
 
         def ACK(self):
-            data = bytes()
-            data[TYPE] = self.header
-            data = InetSocketAddress("controller", printForwardingTable(self))
+            info = bytes()
+            info[d] = self.header
+            info = socket("controller", printForwardingTable(self))
             packetRec = property(socket.sendto(data))
             socket.send(packetRec)
 
@@ -59,7 +58,7 @@ class Router(Node):
 
     def printDetails(self):
         print("Forwarding Table: \n")
-        print("{:%-1s %1s %1s %1s %1s %n ".format('DEST', "->", 'IN', '->', 'OUT'))
+        print("('DEST', "->", 'IN', '->', 'OUT')"
         print("----------------------------")
 
     def sendSignal(self, packetLocation):
@@ -68,7 +67,6 @@ class Router(Node):
         if recDes != "there is an error":
             print(f"Next destination ---> : {recDes}")
 
-            packet = DatagramPacket(packetLocation.getData(), packetLocation.getLength())
 
             socket.send(packet)
             print("Message was forwarded to the next destination .")
@@ -80,7 +78,6 @@ class Router(Node):
                 finalDes = packetSource.getData()
                 finalDes[e] = range
 
-                addressCont = InetSocketAddress("Controller", packetSource)
                 nextPacket = socket.send(packetSource)
                 finalDes[e] = nextPacket
 

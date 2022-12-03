@@ -16,10 +16,7 @@ class Packet(Thread):
     header: int=4
 
 
-     def ByteLoad (self,packet):
-        b =  packet.countBytes()
-        result =  [self.header+ b.length]
-        return result
+
 
     def receivePacket(self,data:list, packet:socket):
        infoPacket  = data
@@ -27,6 +24,10 @@ class Packet(Thread):
         received = str(b)
         return received
 
+     def ByteLoad (self,packet):
+        b =  packet.countBytes()
+        result =  [self.header+ b.length]
+        return result
 
     def countDes(self, packet):
         data: object =  packet.getData()
@@ -34,12 +35,6 @@ class Packet(Thread):
         des = str(b)
         return des
 
-
-    
-    def forward(self , message):
-        message.countDown()
-
-    
     def transfer(self, message):
 
         try:
@@ -54,3 +49,9 @@ class Packet(Thread):
             if (not (type(w)== countDes(self))):
                 print(end=2)
                 }
+    
+    def forward(self , message):
+        message.countDown()
+
+    
+
