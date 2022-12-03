@@ -1,6 +1,6 @@
 # ComputerNetwork
 
-## CSU33031 - Computer Networks:
+## CSU33031 - Computer Networks Assignments :
 
 - [Assignment 1](https://github.com/azizosharke/ComputerNetworks/tree/main/Assignment1) - Python based File Retrieval protocol.
 
